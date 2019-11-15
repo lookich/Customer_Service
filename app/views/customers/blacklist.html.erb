@@ -1,0 +1,35 @@
+<h1>Customers blacklist</h1>
+<td>
+  <%= label_tag :phone %>
+  <%= text_field_tag :phone %>
+</td>
+<td>
+  <%= submit_tag name="Add to blacklist" %>
+</td>
+<%= form_with url: customers_index_url, :method => :put do |f| %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Company name</th>
+        <th scope="col">Phone</th>
+        <th scope="col-6">Description</th>
+        <th scope="col">Blacklist</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @blacklist.each do |blacklist|%>
+        <tr>
+          <td><%= check_box_tag 'ids[]', blacklist.id %></td>
+          <td><%= blacklist.name %></td>
+          <td><%= blacklist.phone %></td>
+          <td><%= blacklist.description %></td>
+          <td><%= blacklist.blacklist %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <p>
+    <%= submit_tag name="Delete from blacklist" %><br>
+  </p>
+<% end %>

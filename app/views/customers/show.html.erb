@@ -1,0 +1,19 @@
+<h1>Company Info</h1>
+
+<div class="field">
+  <%= @customer.name %><br>
+</div>
+
+<div class="field">
+  <%= @customer.phone %>
+</div>
+
+<div class="field">
+  <%= @customer.description %><br>
+</div>
+
+
+<td class="list_actions">
+  <%= link_to 'Edit', edit_customer_path(@customer) %> |
+  <%= link_to 'Back', root_path %>
+</td>

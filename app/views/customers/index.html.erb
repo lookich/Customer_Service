@@ -1,0 +1,32 @@
+<h1>Customers</h1>
+<%= form_with url: customers_index_url, :method => :put do |f| %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Company name</th>
+        <th scope="col">Phone</th>
+        <th scope="col-6">Description</th>
+        <th scope="col">Blacklist</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer|%>
+        <tr>
+          <td><%= check_box_tag 'ids[]', customer.id %></td>
+          <td><%= customer.name %></td>
+          <td><%= customer.phone %></td>
+          <td><%= customer.description %></td>
+          <td><%= customer.blacklist %></td>
+          <td>
+            <%= link_to 'Edit', edit_customer_path(customer) %><br/>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <p>
+    <%= submit_tag name="Add to blacklist" %><br>
+  </p>
+<% end %>
